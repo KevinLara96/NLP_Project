@@ -20,6 +20,5 @@ print()
 
 clean_corpus = [i for i in clean_corpus if i not in stopwords]
 
-print(clean_corpus[:200])
-
-BPE.BPE(clean_corpus)
+BPE.find_vocab(clean_corpus)
+BPE.BPE(clean_corpus, 5)
