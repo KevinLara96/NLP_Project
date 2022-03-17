@@ -16,7 +16,7 @@ def find_vocab(corpus):
     max_ = 0
     letter = ()
     for pair, freq in pair_list.items():
-        print(pair, freq)
         if(freq > max_):
             max_ = freq
             letter = pair
+    print(letter, max_)
