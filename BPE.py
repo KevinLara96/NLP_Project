@@ -20,3 +20,11 @@ def find_vocab(corpus):
             max_ = freq
             letter = pair
     print(letter, max_)
+
+    for i in range(100):
+        for j in range(0, len(corpus[i])-2, 2):
+            if(letter[0]==corpus[i][j] and letter[1]==corpus[i][j+2]):
+                print(letter[0], letter[1], ' -> ', corpus[i][j], corpus[i][j+2])
+                corpus[i] = corpus[i][0:j+1:] + corpus[i][j+2::]
+                print(corpus[i])
+        print()
