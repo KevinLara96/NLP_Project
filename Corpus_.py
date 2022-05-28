@@ -1,18 +1,18 @@
-import string
+#Aguilar Torres Karla Daniela
+#Lara Sala Kevin Arturo
+#Martınez Martınez Vanessa
+
+#Práctica 2
+
+from contextlib import redirect_stderr
 import nltk
 from nltk.corpus import cess_esp #Corpus español
 from nltk.corpus import stopwords
-from nltk.corpus import brown
+from nltk.tokenize import sent_tokenize
 nltk.download('stopwords')
 nltk.download('cess_esp')
-#nltk.download('cess_esp')
-#from transformer import transformer_model
-import matplotlib.pyplot as plt
-from collections import defaultdict
-from elotl.corpus import load
-from seaborn import heatmap
-import BPE #Se importa el módulo del algoritmo.
 
+import Red
 
 #Pasamos el corpus a minúsculas.
 corpus = [i.lower() for i in cess_esp.words()]
@@ -31,9 +31,21 @@ clean_corpus = [i for i in corpus if i.isalpha()]
 stopwords = set(stopwords.words('spanish'))
 clean_corpus = [i for i in clean_corpus if i not in stopwords]
 
+#Se separan en oraciones
+sentences = sent_tokenize(clean_corpus)
+print(sentences)
+list = Red.Red(sentences, clean_corpus)
+
+#Se separan en palabras
+corpus_words = []
+
+for w in clean_corpus:
+    corpus_words.append(w.split())
+
+print(corpus_words)
 
 #Se separan las palabras en caracteres separados por espacios.
-clean_corpus = [' '.join(list(x)) for x in clean_corpus]
+#clean_corpus = [' '.join(list(x)) for x in clean_corpus]
 
 
 clean_corpus = BPE.BPE(clean_corpus[:100], 20)
